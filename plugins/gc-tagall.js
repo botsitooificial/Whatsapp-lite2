@@ -1,1 +1,20 @@
-let handler=async(_0x32a6d6,{isOwner:_0x16480a,isAdmin:_0x3395f2,conn:_0x37b8e6,text:_0x59c803,participants:_0x1dd78d,args:_0x3e0c6d,command:_0x29131e})=>{if(!(_0x3395f2||_0x16480a)){global['dfail']('admin',_0x32a6d6,_0x37b8e6);throw![];}let _0x2f9946=_0x3e0c6d['join']` `,_0x2a47bb='*𝙼𝙴𝙽𝚂𝙰𝙹𝙴:*\x20'+_0x2f9946,_0xd6e010='⟥⟝⟢⟨\x20*INVOCACION*\x20⟩⟣⟞⟤\x0a\x0a•\x20'+_0x2a47bb+'\x0a•\x20*𝙴𝚃𝙸𝚀𝚄𝙴𝚃𝙰𝚂:*\x0a';for(let _0x2aa767 of _0x1dd78d){_0xd6e010+='•@'+_0x2aa767['id']['split']('@')[0x0]+'\x0a';}_0xd6e010+='⬒─⟢⟨©𝙷𝙰𝚃𝚂𝚄𝙽𝙴-𝙼𝙸𝙺𝚄-𝚄𝙻𝚃𝚁𝙰✍⟩⟣─⬒',_0x37b8e6['sendMessage'](_0x32a6d6['chat'],{'text':_0xd6e010,'mentions':_0x1dd78d['map'](_0x130c6a=>_0x130c6a['id'])});};handler['help']=['tagall\x20<mesaje>','invocar\x20<mesaje>'],handler['tags']=['group'],handler['command']=/^(tagall|invocar|invocacion|todos|invocación)$/i,handler['admin']=!![],handler['group']=!![];export default handler;
+let handler = async(m, { isOwner, isAdmin, conn, text, participants, args, command }) => {
+if (!(isAdmin || isOwner)) {
+global.dfail('admin', m, conn)
+throw false
+}
+let pesan = args.join` `
+let oi = `*👑@𝔠𝔢𝔬𝔤𝔢𝔯𝔦𝔭𝔦𝔲𝔪.𝔡𝔷𝔫* ${pesan}`
+let teks = `*😸𝙈𝙞𝙘𝙝𝙞𝙗𝙤𝙩 𝙩𝙚 𝙞𝙣𝙫𝙤𝙘𝙖😸*\n\n${oi}\n*𝙼𝙴𝙽𝙲𝙸𝙾𝙽𝙴𝚂*\n`
+for (let mem of participants) {
+teks += `🍔🍟 @${mem.id.split('@')[0]}\n`}
+teks += `🍓𝔠𝔢𝔬𝔤𝔢𝔯𝔦𝔭𝔦𝔲𝔪.𝔡𝔷𝔫`
+conn.sendMessage(m.chat, { text: teks, mentions: participants.map(a => a.id) }, )
+}
+handler.help = ['tagall <mesaje>','invocar <mesaje>']
+handler.tags = ['group']
+handler.command = /^(tagall|invocar|invocacion|todos|invocación)$/i
+handler.admin = true
+handler.group = true
+handler.register = true
+export default handler
